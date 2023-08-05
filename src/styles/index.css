@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "Nunito";
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #99f6e4;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #14b8a6;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0f766e;
+}
+
+#contactlist :first-child {
+  border: 0;
+}

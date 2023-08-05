@@ -1,5 +1,39 @@
 {
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ]
-  }
+  "contacts": [
+    {
+      "id": 1,
+      "name": "elexander",
+      "email": "mail@mail.com"
+    },
+    {
+      "id": 2,
+      "name": "eva",
+      "email": "eva2000@mail.com"
+    },
+    {
+      "id": 3,
+      "name": "elijah",
+      "email": "elielijah165@mail.com"
+    },
+    {
+      "id": 4,
+      "name": "demon",
+      "email": "iamdemaon@mail.com"
+    },
+    {
+      "id": 5,
+      "name": "scarrlet",
+      "email": "ms.scarrlet@mail.com"
+    },
+    {
+      "id": 6,
+      "name": "tomas",
+      "email": "tomas..nash@mail.com"
+    },
+    {
+      "id": 7,
+      "name": "jhon",
+      "email": "jhoooon@mail.com"
+    }
+  ]
+}
