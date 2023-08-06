@@ -14,7 +14,12 @@ const Header = () => {
             </NavLink>
           </li>
           <li className="hover:text-yellow-300">
-            <NavLink>Todo</NavLink>
+            <NavLink
+              className={(data) => (data.isActive ? "text-green-600" : "")}
+              to="/add-contact"
+            >
+              Add New Contact
+            </NavLink>
           </li>
         </ul>
       </nav>

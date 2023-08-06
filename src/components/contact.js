@@ -7,7 +7,9 @@ import {
 const Contact = ({ contact, setContacts }) => {
   const deleteHandler = async (id) => {
     await deleteIDContactHttp(id);
+    console.log("delete contact");
     const response = await getAllContactHttp();
+    console.log("get all comtact");
     setContacts(response.data);
   };
 

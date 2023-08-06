@@ -1,9 +1,26 @@
+import { useEffect, useState } from "react";
 import Contact from "./contact";
 import { ThreeCircles } from "react-loader-spinner";
+import { getAllContactHttp } from "../services/httpServices";
 
-const ContactList = ({ setContacts, contacts }) => {
+const ContactList = () => {
+  const [contacts, setContacts] = useState([]);
+
+  useEffect(() => {
+    async function get() {
+      try {
+        const response = await getAllContactHttp();
+        setContacts(response.data);
+        console.log("get all contact");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    get();
+  }, []);
+
   return (
-    <div className="basis-1/2 bg-teal-50 rounded-md py-8 px-10 flex flex-col gap-y-5">
+    <section className="w-7/12 mt-14 m-auto bg-teal-50 rounded-md py-8 px-10 flex flex-col gap-y-5">
       <h2 className="text-4xl text-teal-900">CONTACT LIST</h2>
       {contacts.length ? (
         <>
@@ -31,10 +48,10 @@ const ContactList = ({ setContacts, contacts }) => {
             innerCircleColor="#059669"
             middleCircleColor="#10b981"
           />
-          <snap className="text-teal-900">Loading . . . </snap>
+          <span className="text-teal-900">Loading . . . </span>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

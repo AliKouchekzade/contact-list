@@ -1,18 +1,21 @@
 import { useState } from "react";
-import { addNewContactHttp, getAllContactHttp } from "../services/httpServices";
+import { addNewContactHttp } from "../services/httpServices";
+import { useNavigate } from "react-router-dom";
 
-const AddContact = ({ setContacts }) => {
+const AddContact = () => {
   const [newContact, setNewContact] = useState({ name: "", email: "" });
+
+  const navigate = useNavigate();
 
   const addNewContactHandler = async () => {
     await addNewContactHttp(newContact);
-    const resposne = await getAllContactHttp();
-    setContacts(resposne.data);
     setNewContact({ name: "", email: "" });
+    console.log("add contact");
+    navigate("/");
   };
 
   return (
-    <div className="basis-1/2 bg-teal-50 rounded-md py-8 px-10 flex flex-col gap-y-6">
+    <section className="w-7/12 mt-14 m-auto bg-teal-50 rounded-md py-8 px-10 flex flex-col gap-y-6">
       <h2 className="text-4xl text-teal-900">ADD CONTACT</h2>
       <label className="text-teal-700 text-lg font-semibold mt-5">Name</label>
       <input
@@ -34,13 +37,24 @@ const AddContact = ({ setContacts }) => {
           setNewContact({ ...newContact, email: target.value })
         }
       ></input>
-      <button
-        className="text-xl mt-5 bg-teal-700 text-white py-2 rounded-lg"
-        onClick={addNewContactHandler}
-      >
-        Add Contact
-      </button>
-    </div>
+      <div className="gap-x-10 mt-5 flex justify-between">
+        <button
+          className="basis-1/2 text-xl bg-teal-700 text-white py-2 rounded-lg"
+          onClick={addNewContactHandler}
+        >
+          Add Contact
+        </button>
+        <button
+          className="basis-1/2 text-xl text-white py-2 rounded-lg bg-red-600"
+          onClick={() => {
+            navigate("/");
+            setNewContact({ name: "", email: "" });
+          }}
+        >
+          Cancel
+        </button>
+      </div>
+    </section>
   );
 };
 
