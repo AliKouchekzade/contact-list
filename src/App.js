@@ -5,6 +5,7 @@ import AddPage from "./pages/addPage";
 import ContactDetail from "./components/contactDetail";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NotFound from "./pages/notFound";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/add-contact" element={<AddPage />} />
           <Route path="/contact/:id" element={<ContactDetail />} />
           <Route path="/contact" element={<Navigate to="/" />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
     </BrowserRouter>
