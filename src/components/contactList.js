@@ -20,13 +20,18 @@ const ContactList = () => {
   }, []);
 
   return (
-    <section className="w-7/12 mt-14 m-auto bg-teal-50 rounded-md py-8 px-10 flex flex-col gap-y-5">
-      <h2 className="text-4xl text-teal-900">CONTACT LIST</h2>
+    <section className=" w-7/12 mt-16 m-auto bg-teal-50 rounded-md py-8 px-10 flex flex-col gap-y-5">
+      <div className="flex gap-x-3 items-center">
+        <h2 className="text-4xl text-teal-900">CONTACT LIST</h2>
+        <span className="text-xl text-white bg-teal-300 w-7 h-7 flex justify-center items-center rounded-full">
+          {contacts.length}
+        </span>
+      </div>
       {contacts.length ? (
         <>
           <div
             id="contactlist"
-            className="h-80 overflow-auto p-3 border-2 rounded-lg border-teal-600 flex flex-col gap-y-1 "
+            className="p-3 border-2 rounded-lg border-teal-600 flex flex-col gap-y-1 "
           >
             {contacts.map((contact) => (
               <Contact

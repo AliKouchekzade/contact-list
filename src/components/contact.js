@@ -3,6 +3,7 @@ import {
   deleteIDContactHttp,
   getAllContactHttp,
 } from "../services/httpServices";
+import { useNavigate } from "react-router-dom";
 
 const Contact = ({ contact, setContacts }) => {
   const deleteHandler = async (id) => {
@@ -13,12 +14,17 @@ const Contact = ({ contact, setContacts }) => {
     setContacts(response.data);
   };
 
+  const navigate = useNavigate();
+
   return (
     <div
       style={{ borderTopWidth: "1px" }}
       className="border-teal-200 flex justify-between items-center"
     >
-      <div className="flex items-center gap-x-5 cursor-pointer">
+      <div
+        onClick={() => navigate(`/contact/${contact.id}`)}
+        className="flex items-center gap-x-5 cursor-pointer"
+      >
         <img
           className="w-10 h-10"
           src={require("../assets/profile.png")}

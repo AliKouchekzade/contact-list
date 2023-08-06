@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { addNewContactHttp } from "../services/httpServices";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AddContact = () => {
   const [newContact, setNewContact] = useState({ name: "", email: "" });
@@ -12,6 +13,16 @@ const AddContact = () => {
     setNewContact({ name: "", email: "" });
     console.log("add contact");
     navigate("/");
+    toast.success("Contact Added", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
   return (
@@ -21,7 +32,7 @@ const AddContact = () => {
       <input
         className="px-5 py-1 outline-teal-800 rounded-md border border-teal-700 h-10 text-lg"
         type="text"
-        placeholder="text"
+        placeholder="name"
         value={newContact.name}
         onChange={({ target }) =>
           setNewContact({ ...newContact, name: target.value })
