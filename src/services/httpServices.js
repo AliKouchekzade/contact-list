@@ -11,7 +11,8 @@ const http = {
 
 export const getAllContactHttp = () => http.get("/contacts");
 
-export const addNewContactHttp = (newContact) =>
-  http.post("/contacts", newContact);
+export const addNewContactHttp = (newCon) => http.post("/contacts", newCon);
+
+export const deleteIDContactHttp = (id) => http.delete(`/contacts/${id}`);
 
 export default http;

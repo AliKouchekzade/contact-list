@@ -22,7 +22,7 @@ const HomePage = () => {
   return (
     <section className="mt-10 flex container p-5 gap-x-5">
       <AddContact setContacts={setContacts} />
-      <ContactList contacts={contacts} />
+      <ContactList setContacts={setContacts} contacts={contacts} />
     </section>
   );
 };

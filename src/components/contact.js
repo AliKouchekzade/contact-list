@@ -1,6 +1,16 @@
 import { FaTrashCan } from "react-icons/fa6";
+import {
+  deleteIDContactHttp,
+  getAllContactHttp,
+} from "../services/httpServices";
 
-const Contact = ({ contact }) => {
+const Contact = ({ contact, setContacts }) => {
+  const deleteHandler = async (id) => {
+    await deleteIDContactHttp(id);
+    const response = await getAllContactHttp();
+    setContacts(response.data);
+  };
+
   return (
     <div
       style={{ borderTopWidth: "1px" }}
@@ -17,7 +27,10 @@ const Contact = ({ contact }) => {
           <p className="font-semibold text-teal-800">{contact.email}</p>
         </div>
       </div>
-      <FaTrashCan className="text-red-600 w-5 h-5 cursor-pointer" />
+      <FaTrashCan
+        onClick={() => deleteHandler(contact.id)}
+        className="text-red-600 w-5 h-5 cursor-pointer"
+      />
     </div>
   );
 };
