@@ -4,13 +4,17 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const AddContact = () => {
-  const [newContact, setNewContact] = useState({ name: "", email: "" });
+  const [newContact, setNewContact] = useState({
+    name: "",
+    email: "",
+    img: "../assets/profile.png",
+  });
 
   const navigate = useNavigate();
 
   const addNewContactHandler = async () => {
     await addNewContactHttp(newContact);
-    setNewContact({ name: "", email: "" });
+    setNewContact({ name: "", email: "", img: "../assets/profile.png" });
     console.log("add contact");
     navigate("/");
     toast.success("Contact Added", {

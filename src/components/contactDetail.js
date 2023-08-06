@@ -5,7 +5,7 @@ import {
   getIDContactHttp,
   updateIDContactHttp,
 } from "../services/httpServices";
-import { FaLeftLong } from "react-icons/fa6";
+import { FaLeftLong, FaUpload } from "react-icons/fa6";
 import { toast } from "react-toastify";
 
 const ContactDetail = () => {
@@ -69,12 +69,42 @@ const ContactDetail = () => {
         </div>
         <div className="flex basis-2/4 justify-center">
           <img
-            className="w-36 h-36 "
-            src={require("../assets/profile.png")}
+            className="w-36 h-36 rounded-full"
+            src={contact.img}
             alt="profile"
           />
         </div>
-        <div className="basis-1/2"></div>
+        <div className="basis-1/2 flex flex-col justify-center items-center">
+          <input
+            type="file"
+            name="file"
+            id="file"
+            className="w-px h-px opacity-0 overflow-hidden abolute z-0"
+            onChange={({ target }) => {
+              setContact({
+                ...contact,
+                img:
+                  "../assets/" +
+                  target.value.substring(target.value.lastIndexOf("\\") + 1),
+              });
+              updateButton.current.className =
+                updateButton.current.className.replace("300", "700");
+              updateButton.current.className =
+                updateButton.current.className.replace(
+                  "cursor-not-allowed",
+                  "cursor-pointer"
+                );
+            }}
+            accept="image/*"
+          />
+          <label
+            htmlFor="file"
+            className="bg-gray-200 w-min rounded-lg px-2 py-1 flex justify-start items-center gap-x-2 cursor-pointer"
+          >
+            <FaUpload className="text-teal-800" />
+            <span className="text-teal-800">upload</span>
+          </label>
+        </div>
       </div>
       <div className="flex items-center gap-x-10 justify-between">
         <label className="text-teal-700 text-lg font-semibold">Name:</label>

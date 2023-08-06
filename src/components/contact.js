@@ -26,8 +26,8 @@ const Contact = ({ contact, setContacts }) => {
         className="flex items-center gap-x-5 cursor-pointer"
       >
         <img
-          className="w-10 h-10"
-          src={require("../assets/profile.png")}
+          className="w-10 h-10 rounded-full"
+          src={contact.img}
           alt="profile"
         />
         <div>
